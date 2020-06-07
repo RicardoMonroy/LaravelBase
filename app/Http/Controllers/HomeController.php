@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -21,6 +22,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // $user = Auth::user();
+        // $role = $user->roles->implode('name', ',');
+        // dd($user);
+
         return view('dashboard');
     }
 }
