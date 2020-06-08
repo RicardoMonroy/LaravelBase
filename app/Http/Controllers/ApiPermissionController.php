@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use App\User;
+use Spatie\Permission\Models\Permission;
 
-class ApiUsersController extends Controller
+class ApiPermissionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class ApiUsersController extends Controller
      */
     public function index()
     {
-        return User::orderBy('id', 'desc')->get();
+        return Permission::orderBy('id', 'desc')->get();
     }
 
     /**
@@ -36,14 +35,13 @@ class ApiUsersController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new User;
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
+        $permission = new Permission;
+        $permission->name = $request->name;
+        
+        $permission->save();
 
-        $user->save();
-
-        return 'Usuario guardado correctamente';
+        return 'Permiso guardado correctamente';
+        
     }
 
     /**
@@ -77,11 +75,10 @@ class ApiUsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
-        $user->name = $request->name;
-        $user->email = $request->email;
+        $permission = Permission::findOrFail($id);
+        $permission->name = $request->name;
 
-        $user->save();
+        $permission->save();
 
         return 'Se actualizó con éxito!';
     }
@@ -94,8 +91,8 @@ class ApiUsersController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
+        $permission = Permission::findOrFail($id);
+        $permission->delete();
 
         return 'Eliminado con éxito';
     }

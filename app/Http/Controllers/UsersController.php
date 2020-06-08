@@ -16,7 +16,7 @@ class UsersController extends Controller
      */
     public function index(User $model)
     {
-        return view('users.index', ['users' => $model->paginate(15)]);
+        return view('admin.users', ['users' => $model->paginate(15)]);
     }
 
     /**

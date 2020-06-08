@@ -17,14 +17,14 @@
             <p>{{ __('Dashboard') }}</p>
         </a>
       </li>
-      <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
+      <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management' || $activePage == 'roles-management' || $activePage == 'permissions-management') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
           <i class="material-icons">admin_panel_settings</i>
           <p>{{ __('Administración') }}
             <b class="caret"></b>
           </p>
         </a>
-        <div class="collapse {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' show' : '' }}" id="laravelExample">
+        <div class="collapse {{ ($activePage == 'profile' || $activePage == 'user-management' || $activePage == 'roles-management' || $activePage == 'permissions-management') ? ' show' : '' }}" id="laravelExample">
           <ul class="nav">
             <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('profile.edit') }}">
@@ -36,6 +36,18 @@
               <a class="nav-link" href="{{ route('users.index') }}">
                 <span class="sidebar-mini"> US </span>
                 <span class="sidebar-normal"> {{ __('Usurios') }} </span>
+              </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'roles-management' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('roles.index') }}">
+                <span class="sidebar-mini"> RS </span>
+                <span class="sidebar-normal"> {{ __('Roles') }} </span>
+              </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'permissions-management' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('permissions.index') }}">
+                <span class="sidebar-mini"> PR </span>
+                <span class="sidebar-normal"> {{ __('Permisos') }} </span>
               </a>
             </li>
           </ul>
@@ -57,12 +69,6 @@
         <a class="nav-link" href="{{ route('icons') }}">
           <i class="material-icons">bubble_chart</i>
           <p>{{ __('Iconos') }}</p>
-        </a>
-      </li>
-      <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('map') }}">
-          <i class="material-icons">location_ons</i>
-            <p>{{ __('Mapas') }}</p>
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'notifications' ? ' active' : '' }}">

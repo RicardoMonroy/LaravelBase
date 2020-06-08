@@ -21,6 +21,8 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('userindex-component', require('./components/UsersIndexComponent.vue').default);
+Vue.component('permissionindex-component', require('./components/PermissionsIndexComponent.vue').default);
+Vue.component('roleindex-component', require('./components/RolesIndexComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

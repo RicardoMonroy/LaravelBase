@@ -1944,6 +1944,584 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PermissionsIndexComponent.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PermissionsIndexComponent.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      permissions: [],
+      mensaje: ''
+    };
+  },
+  methods: {
+    getPermissions: function getPermissions() {
+      var _this = this;
+
+      var url = '/api/permissions';
+      axios.get(url).then(function (response) {
+        console.log(response.data);
+        _this.permissions = response.data;
+      });
+    },
+    NewPermission: function NewPermission() {
+      var _this2 = this;
+
+      //console.log("nuevo dato");
+      Swal.fire({
+        title: 'Nombre del permiso',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Crear permiso',
+        cancelButtonText: 'Cancelar!',
+        html: '<div id="swal2-content" style="display: block;">Puede ser algo simple, como: "editar permisos"</div>' + '<input id="nombre" name="nombre" class="swal2-input" placeholder="" type="text" style="display: flex;">',
+        focusConfirm: false,
+        preConfirm: function () {
+          var _preConfirm = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return axios.post('/api/permissions', {
+                      name: document.getElementById('nombre').value
+                    }).then(function (response) {
+                      //console.log(response.data);
+                      toastr.success(response.data);
+                    })["catch"](function (error) {
+                      if (error.response) {
+                        // The request was made and the server responded with a status code
+                        // that falls out of the range of 2xx
+                        // console.log(error.response.data);
+                        // console.log(error.response.status);
+                        toastr.error('¡Vaya! Parece que ya existe ese permiso. No se realizaron cambios.', 'Algo salió mal');
+                        console.log(error.response.headers);
+                      } else if (error.request) {
+                        // The request was made but no response was received
+                        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                        // http.ClientRequest in node.js
+                        console.log('segundo error'); //console.log(error.request);
+                      } else {
+                        // Something happened in setting up the request that triggered an Error
+                        console.log('tercer error'); //console.log('Error', error.message);
+                      } //console.log(error.config);
+
+                    });
+
+                  case 2:
+                    _this2.getPermissions(); //return toastr.success(this.mensaje);
+
+
+                  case 3:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee);
+          }));
+
+          function preConfirm() {
+            return _preConfirm.apply(this, arguments);
+          }
+
+          return preConfirm;
+        }()
+      });
+    },
+    DeletePermission: function DeletePermission(permission) {
+      var _this3 = this;
+
+      console.log(permission);
+      Swal.fire({
+        title: 'Estás seguro?',
+        text: "¿Realmente quieres eliminar a " + permission.name + "? ¡Al eliminado es imposible recuperarlo!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Si, eliminar!',
+        cancelButtonText: 'No, dejalo!'
+      }).then( /*#__PURE__*/function () {
+        var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(result) {
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  if (!result.value) {
+                    _context2.next = 6;
+                    break;
+                  }
+
+                  _context2.next = 3;
+                  return axios["delete"]('/api/permissions/' + permission.id).then(function (response) {
+                    //console.log(response.data);
+                    toastr.success(response.data);
+                  })["catch"](function (error) {
+                    console.log(error);
+                  });
+
+                case 3:
+                  _this3.getPermissions();
+
+                  _context2.next = 7;
+                  break;
+
+                case 6:
+                  if (result.dismiss === Swal.DismissReason.cancel) {
+                    toastr.success(permission.name + ' vivirá un día más!');
+                  }
+
+                case 7:
+                case "end":
+                  return _context2.stop();
+              }
+            }
+          }, _callee2);
+        }));
+
+        return function (_x) {
+          return _ref.apply(this, arguments);
+        };
+      }());
+    },
+    EditPermission: function EditPermission(permission) {
+      var _this4 = this;
+
+      console.log(permission);
+      Swal.fire({
+        title: 'Editar a ' + permission.name,
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Realizar cambios!',
+        cancelButtonText: 'Cancelar!',
+        html: '<div id="swal2-content" style="display: block;">Nombre</div>' + '<input id="nombre" name="nombre" class="swal2-input" placeholder="" type="text" style="display: flex;">',
+        focusConfirm: false,
+        preConfirm: function () {
+          var _preConfirm2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+              while (1) {
+                switch (_context3.prev = _context3.next) {
+                  case 0:
+                    _context3.next = 2;
+                    return axios.put('/api/permissions/' + permission.id, {
+                      name: document.getElementById('nombre').value
+                    }).then(function (response) {
+                      //console.log(response.data);
+                      toastr.success(response.data);
+                    })["catch"](function (error) {
+                      if (error.response) {
+                        // The request was made and the server responded with a status code
+                        // that falls out of the range of 2xx
+                        // console.log(error.response.data);
+                        // console.log(error.response.status);
+                        toastr.error('¡Vaya! Parece que ya existe ese permiso. No se realizaron cambios.', 'Algo salió mal'); //console.log(error.response.headers);
+                      } else if (error.request) {
+                        // The request was made but no response was received
+                        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                        // http.ClientRequest in node.js
+                        console.log('segundo error'); //console.log(error.request);
+                      } else {
+                        // Something happened in setting up the request that triggered an Error
+                        console.log('tercer error'); //console.log('Error', error.message);
+                      }
+
+                      console.log(error.config);
+                    });
+
+                  case 2:
+                    _this4.getPermissions(); //return toastr.success(this.mensaje);
+
+
+                  case 3:
+                  case "end":
+                    return _context3.stop();
+                }
+              }
+            }, _callee3);
+          }));
+
+          function preConfirm() {
+            return _preConfirm2.apply(this, arguments);
+          }
+
+          return preConfirm;
+        }()
+      });
+      document.getElementById('nombre').value = permission.name;
+    }
+  },
+  mounted: function mounted() {
+    this.getPermissions();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/RolesIndexComponent.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/RolesIndexComponent.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      permissions: [],
+      mensaje: ''
+    };
+  },
+  methods: {
+    getPermissions: function getPermissions() {
+      var _this = this;
+
+      var url = '/api/permissions';
+      axios.get(url).then(function (response) {
+        console.log(response.data);
+        _this.permissions = response.data;
+      });
+    },
+    NewPermission: function NewPermission() {
+      var _this2 = this;
+
+      //console.log("nuevo dato");
+      Swal.fire({
+        title: 'Nombre del permiso',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Crear permiso',
+        cancelButtonText: 'Cancelar!',
+        html: '<div id="swal2-content" style="display: block;">Puede ser algo simple, como: "editar permisos"</div>' + '<input id="nombre" name="nombre" class="swal2-input" placeholder="" type="text" style="display: flex;">',
+        focusConfirm: false,
+        preConfirm: function () {
+          var _preConfirm = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return axios.post('/api/permissions', {
+                      name: document.getElementById('nombre').value
+                    }).then(function (response) {
+                      //console.log(response.data);
+                      toastr.success(response.data);
+                    })["catch"](function (error) {
+                      if (error.response) {
+                        // The request was made and the server responded with a status code
+                        // that falls out of the range of 2xx
+                        // console.log(error.response.data);
+                        // console.log(error.response.status);
+                        toastr.error('¡Vaya! Parece que ya existe ese permiso. No se realizaron cambios.', 'Algo salió mal');
+                        console.log(error.response.headers);
+                      } else if (error.request) {
+                        // The request was made but no response was received
+                        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                        // http.ClientRequest in node.js
+                        console.log('segundo error'); //console.log(error.request);
+                      } else {
+                        // Something happened in setting up the request that triggered an Error
+                        console.log('tercer error'); //console.log('Error', error.message);
+                      } //console.log(error.config);
+
+                    });
+
+                  case 2:
+                    _this2.getPermissions(); //return toastr.success(this.mensaje);
+
+
+                  case 3:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee);
+          }));
+
+          function preConfirm() {
+            return _preConfirm.apply(this, arguments);
+          }
+
+          return preConfirm;
+        }()
+      });
+    },
+    DeletePermission: function DeletePermission(permission) {
+      var _this3 = this;
+
+      console.log(permission);
+      Swal.fire({
+        title: 'Estás seguro?',
+        text: "¿Realmente quieres eliminar a " + permission.name + "? ¡Al eliminado es imposible recuperarlo!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Si, eliminar!',
+        cancelButtonText: 'No, dejalo!'
+      }).then( /*#__PURE__*/function () {
+        var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(result) {
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  if (!result.value) {
+                    _context2.next = 6;
+                    break;
+                  }
+
+                  _context2.next = 3;
+                  return axios["delete"]('/api/permissions/' + permission.id).then(function (response) {
+                    //console.log(response.data);
+                    toastr.success(response.data);
+                  })["catch"](function (error) {
+                    console.log(error);
+                  });
+
+                case 3:
+                  _this3.getPermissions();
+
+                  _context2.next = 7;
+                  break;
+
+                case 6:
+                  if (result.dismiss === Swal.DismissReason.cancel) {
+                    toastr.success(permission.name + ' vivirá un día más!');
+                  }
+
+                case 7:
+                case "end":
+                  return _context2.stop();
+              }
+            }
+          }, _callee2);
+        }));
+
+        return function (_x) {
+          return _ref.apply(this, arguments);
+        };
+      }());
+    },
+    EditPermission: function EditPermission(permission) {
+      var _this4 = this;
+
+      console.log(permission);
+      Swal.fire({
+        title: 'Editar a ' + permission.name,
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Realizar cambios!',
+        cancelButtonText: 'Cancelar!',
+        html: '<div id="swal2-content" style="display: block;">Nombre</div>' + '<input id="nombre" name="nombre" class="swal2-input" placeholder="" type="text" style="display: flex;">',
+        focusConfirm: false,
+        preConfirm: function () {
+          var _preConfirm2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+              while (1) {
+                switch (_context3.prev = _context3.next) {
+                  case 0:
+                    _context3.next = 2;
+                    return axios.put('/api/permissions/' + permission.id, {
+                      name: document.getElementById('nombre').value
+                    }).then(function (response) {
+                      //console.log(response.data);
+                      toastr.success(response.data);
+                    })["catch"](function (error) {
+                      if (error.response) {
+                        // The request was made and the server responded with a status code
+                        // that falls out of the range of 2xx
+                        // console.log(error.response.data);
+                        // console.log(error.response.status);
+                        toastr.error('¡Vaya! Parece que ya existe ese permiso. No se realizaron cambios.', 'Algo salió mal'); //console.log(error.response.headers);
+                      } else if (error.request) {
+                        // The request was made but no response was received
+                        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                        // http.ClientRequest in node.js
+                        console.log('segundo error'); //console.log(error.request);
+                      } else {
+                        // Something happened in setting up the request that triggered an Error
+                        console.log('tercer error'); //console.log('Error', error.message);
+                      }
+
+                      console.log(error.config);
+                    });
+
+                  case 2:
+                    _this4.getPermissions(); //return toastr.success(this.mensaje);
+
+
+                  case 3:
+                  case "end":
+                    return _context3.stop();
+                }
+              }
+            }, _callee3);
+          }));
+
+          function preConfirm() {
+            return _preConfirm2.apply(this, arguments);
+          }
+
+          return preConfirm;
+        }()
+      });
+      document.getElementById('nombre').value = permission.name;
+    }
+  },
+  mounted: function mounted() {
+    this.getPermissions();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/UsersIndexComponent.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/UsersIndexComponent.vue?vue&type=script&lang=js& ***!
@@ -2143,7 +2721,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               switch (_context2.prev = _context2.next) {
                 case 0:
                   if (!result.value) {
-                    _context2.next = 7;
+                    _context2.next = 6;
                     break;
                   }
 
@@ -2158,16 +2736,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 case 3:
                   _this3.getUsers();
 
-                  Swal.fire('Eliminado!', 'Ya no sabremos más de ' + user.name, 'success');
-                  _context2.next = 8;
+                  _context2.next = 7;
                   break;
 
-                case 7:
+                case 6:
                   if (result.dismiss === Swal.DismissReason.cancel) {
                     toastr.success(user.name + ' vivirá un día más!');
                   }
 
-                case 8:
+                case 7:
                 case "end":
                   return _context2.stop();
               }
@@ -39053,6 +39630,324 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PermissionsIndexComponent.vue?vue&type=template&id=09fa6ad8&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PermissionsIndexComponent.vue?vue&type=template&id=09fa6ad8& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-md-12" }, [
+      _c("div", { staticClass: "card" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-12 text-right" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-sm btn-primary",
+                  attrs: { href: "#" },
+                  on: {
+                    click: function($event) {
+                      return _vm.NewPermission()
+                    }
+                  }
+                },
+                [_vm._v("Añadir Permiso")]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "table-responsive" }, [
+            _c("table", { staticClass: "table" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.permissions, function(permission) {
+                  return _c("tr", { key: permission.id }, [
+                    _c("td", [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(permission.id) +
+                          "\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(permission.name) +
+                          "\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "td-actions text-right" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-success btn-link",
+                          attrs: { rel: "tooltip" },
+                          on: {
+                            click: function($event) {
+                              return _vm.EditPermission(permission)
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "material-icons" }, [
+                            _vm._v("edit")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "ripple-container" })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger btn-link",
+                          attrs: { rel: "tooltip" },
+                          on: {
+                            click: function($event) {
+                              return _vm.DeletePermission(permission)
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "material-icons" }, [
+                            _vm._v("delete")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "ripple-container" })
+                        ]
+                      )
+                    ])
+                  ])
+                }),
+                0
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header card-header-primary" }, [
+      _c("h4", { staticClass: "card-title " }, [_vm._v("Permisos")]),
+      _vm._v(" "),
+      _c("p", { staticClass: "card-category" }, [
+        _vm._v(" Aquí se administran todos los permisos")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: " text-primary" }, [
+      _c("tr", [
+        _c("th", [
+          _vm._v("\n                            ID\n                        ")
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _vm._v(
+            "\n                        Nombre del permiso\n                        "
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-right" }, [
+          _vm._v(
+            "\n                            Acciones\n                        "
+          )
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/RolesIndexComponent.vue?vue&type=template&id=f057d366&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/RolesIndexComponent.vue?vue&type=template&id=f057d366& ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-md-12" }, [
+      _c("div", { staticClass: "card" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-12 text-right" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-sm btn-primary",
+                  attrs: { href: "#" },
+                  on: {
+                    click: function($event) {
+                      return _vm.NewPermission()
+                    }
+                  }
+                },
+                [_vm._v("Añadir Permiso")]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "table-responsive" }, [
+            _c("table", { staticClass: "table" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.permissions, function(permission) {
+                  return _c("tr", { key: permission.id }, [
+                    _c("td", [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(permission.id) +
+                          "\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(permission.name) +
+                          "\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "td-actions text-right" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-success btn-link",
+                          attrs: { rel: "tooltip" },
+                          on: {
+                            click: function($event) {
+                              return _vm.EditPermission(permission)
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "material-icons" }, [
+                            _vm._v("edit")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "ripple-container" })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger btn-link",
+                          attrs: { rel: "tooltip" },
+                          on: {
+                            click: function($event) {
+                              return _vm.DeletePermission(permission)
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "material-icons" }, [
+                            _vm._v("delete")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "ripple-container" })
+                        ]
+                      )
+                    ])
+                  ])
+                }),
+                0
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header card-header-primary" }, [
+      _c("h4", { staticClass: "card-title " }, [_vm._v("Permisos")]),
+      _vm._v(" "),
+      _c("p", { staticClass: "card-category" }, [
+        _vm._v(" Aquí se administran todos los permisos")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: " text-primary" }, [
+      _c("tr", [
+        _c("th", [
+          _vm._v("\n                            ID\n                        ")
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _vm._v(
+            "\n                        Nombre del permiso\n                        "
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-right" }, [
+          _vm._v(
+            "\n                            Acciones\n                        "
+          )
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/UsersIndexComponent.vue?vue&type=template&id=28ee0e50&":
 /*!**********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/UsersIndexComponent.vue?vue&type=template&id=28ee0e50& ***!
@@ -51427,6 +52322,8 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 Vue.component('userindex-component', __webpack_require__(/*! ./components/UsersIndexComponent.vue */ "./resources/js/components/UsersIndexComponent.vue")["default"]);
+Vue.component('permissionindex-component', __webpack_require__(/*! ./components/PermissionsIndexComponent.vue */ "./resources/js/components/PermissionsIndexComponent.vue")["default"]);
+Vue.component('roleindex-component', __webpack_require__(/*! ./components/RolesIndexComponent.vue */ "./resources/js/components/RolesIndexComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -51550,6 +52447,144 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/PermissionsIndexComponent.vue":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/PermissionsIndexComponent.vue ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PermissionsIndexComponent_vue_vue_type_template_id_09fa6ad8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PermissionsIndexComponent.vue?vue&type=template&id=09fa6ad8& */ "./resources/js/components/PermissionsIndexComponent.vue?vue&type=template&id=09fa6ad8&");
+/* harmony import */ var _PermissionsIndexComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PermissionsIndexComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/PermissionsIndexComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _PermissionsIndexComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PermissionsIndexComponent_vue_vue_type_template_id_09fa6ad8___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PermissionsIndexComponent_vue_vue_type_template_id_09fa6ad8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/PermissionsIndexComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/PermissionsIndexComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/PermissionsIndexComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PermissionsIndexComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PermissionsIndexComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PermissionsIndexComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PermissionsIndexComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PermissionsIndexComponent.vue?vue&type=template&id=09fa6ad8&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/PermissionsIndexComponent.vue?vue&type=template&id=09fa6ad8& ***!
+  \**********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PermissionsIndexComponent_vue_vue_type_template_id_09fa6ad8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./PermissionsIndexComponent.vue?vue&type=template&id=09fa6ad8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PermissionsIndexComponent.vue?vue&type=template&id=09fa6ad8&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PermissionsIndexComponent_vue_vue_type_template_id_09fa6ad8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PermissionsIndexComponent_vue_vue_type_template_id_09fa6ad8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/RolesIndexComponent.vue":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/RolesIndexComponent.vue ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _RolesIndexComponent_vue_vue_type_template_id_f057d366___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RolesIndexComponent.vue?vue&type=template&id=f057d366& */ "./resources/js/components/RolesIndexComponent.vue?vue&type=template&id=f057d366&");
+/* harmony import */ var _RolesIndexComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RolesIndexComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/RolesIndexComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _RolesIndexComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _RolesIndexComponent_vue_vue_type_template_id_f057d366___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _RolesIndexComponent_vue_vue_type_template_id_f057d366___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/RolesIndexComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/RolesIndexComponent.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/RolesIndexComponent.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RolesIndexComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./RolesIndexComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/RolesIndexComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RolesIndexComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/RolesIndexComponent.vue?vue&type=template&id=f057d366&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/RolesIndexComponent.vue?vue&type=template&id=f057d366& ***!
+  \****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RolesIndexComponent_vue_vue_type_template_id_f057d366___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./RolesIndexComponent.vue?vue&type=template&id=f057d366& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/RolesIndexComponent.vue?vue&type=template&id=f057d366&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RolesIndexComponent_vue_vue_type_template_id_f057d366___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RolesIndexComponent_vue_vue_type_template_id_f057d366___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

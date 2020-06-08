@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use App\User;
+use Spatie\Permission\Models\Role;
 
-class ApiUsersController extends Controller
+class ApiRoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class ApiUsersController extends Controller
      */
     public function index()
     {
-        return User::orderBy('id', 'desc')->get();
+        //
     }
 
     /**
@@ -36,14 +35,7 @@ class ApiUsersController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new User;
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-
-        $user->save();
-
-        return 'Usuario guardado correctamente';
+        //
     }
 
     /**
@@ -77,13 +69,7 @@ class ApiUsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-
-        $user->save();
-
-        return 'Se actualizó con éxito!';
+        //
     }
 
     /**
@@ -94,9 +80,6 @@ class ApiUsersController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
-
-        return 'Eliminado con éxito';
+        //
     }
 }

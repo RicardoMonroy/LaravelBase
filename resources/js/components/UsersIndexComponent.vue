@@ -164,12 +164,6 @@
                             console.log(error);
                         });
                         this.getUsers();
-
-                        Swal.fire(
-                        'Eliminado!',
-                        'Ya no sabremos más de '+user.name,
-                        'success'
-                        )
                     } else if (result.dismiss === Swal.DismissReason.cancel) {
                         toastr.success(user.name+' vivirá un día más!');
                     }
